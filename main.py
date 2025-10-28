@@ -235,6 +235,8 @@ def get_content_from_url(url, n=10):
             continue
         if subscribe['url'] == url:
             UA = subscribe.get('User-Agent', '')
+    if not UA or UA.strip() == "":
+        UA = "v2rayng"  # 默认 UA，防止机场返回空内容
     response = tool.getResponse(url, custom_user_agent=UA)
     concount = 1
     while concount <= n and not response:
@@ -631,3 +633,4 @@ if __name__ == '__main__':
         final_config = combin_to_config(config, nodes)  # 节点信息添加到模板
     save_config(providers["save_config_path"], final_config)
     # updateLocalConfig('http://127.0.0.1:9090',providers['save_config_path'])
+
