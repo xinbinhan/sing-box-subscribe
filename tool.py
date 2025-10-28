@@ -293,7 +293,7 @@ def prefixStr(nodelist,prestr):
 def getResponse(url, custom_user_agent=None):
     response = None
     headers = {
-        'User-Agent': custom_user_agent if custom_user_agent else 'v2rayng'
+        'User-Agent': 'v2rayng'
         #'User-Agent': custom_user_agent if custom_user_agent else 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5 Safari/605.1.15'
         #'User-Agent': 'clash.meta'
     }
@@ -335,5 +335,6 @@ class ConfigSSH:
 
     def close(self):
         self.ssh.close()
+
 
 
