@@ -10,7 +10,6 @@ from gh_proxy_helper import set_gh_proxy
 parsers_mod = {}
 providers = None
 color_code = [31, 32, 33, 34, 35, 36, 91, 92, 93, 94, 95, 96]
-DEFAULT_UA = "clash-meta"
 
 
 def loop_color(text):
@@ -237,8 +236,8 @@ def get_content_from_url(url, n=10):
         if subscribe['url'] == url:
             UA = subscribe.get('User-Agent', '')
     if not UA or UA.strip() == "":
-        UA = "clash-meta"  # 默认 UA，防止机场返回空内容
-    response = tool.getResponse(url, custom_user_agent=UA or DEFAULT_UA)
+        UA = "v2rayng"  # 默认 UA，防止机场返回空内容
+    response = tool.getResponse(url, custom_user_agent=UA)
     concount = 1
     while concount <= n and not response:
         print('连接出错，正在进行第 ' + str(concount) + ' 次重试，最多重试 ' + str(n) + ' 次...')
@@ -634,6 +633,7 @@ if __name__ == '__main__':
         final_config = combin_to_config(config, nodes)  # 节点信息添加到模板
     save_config(providers["save_config_path"], final_config)
     # updateLocalConfig('http://127.0.0.1:9090',providers['save_config_path'])
+
 
 
 
