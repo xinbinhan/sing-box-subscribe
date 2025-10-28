@@ -285,19 +285,10 @@ def get_content_from_url(url, n=10):
             return response_text
     else:
         try:
-            clean_text = response_text.strip().replace('\n', '').replace('\r', '')
-            # Base64 字符检测
-            if re.fullmatch(r'[A-Za-z0-9+/=]+', clean_text) and len(clean_text) % 4 == 0:
-                decoded_bytes = tool.b64Decode(clean_text)
-                response_text = decoded_bytes.decode("utf-8", errors="ignore")
-                print("[Base64] 成功解码订阅内容")
-            else:
-                print("[Base64] 内容不是有效 Base64，跳过解码")
-        except Exception as e:
-            print(f"[Base64] 解码失败: {e}")
-
-    # 调试输出前几百字符
-    print(f"[DEBUG] Response sample: {response_text[:200]}")
+            response_text = tool.b64Decode(response_text)
+            response_text = response_text.decode(encoding="utf-8")
+        except:
+            pass
     return response_text
 
 
@@ -640,6 +631,7 @@ if __name__ == '__main__':
         final_config = combin_to_config(config, nodes)  # 节点信息添加到模板
     save_config(providers["save_config_path"], final_config)
     # updateLocalConfig('http://127.0.0.1:9090',providers['save_config_path'])
+
 
 
 
