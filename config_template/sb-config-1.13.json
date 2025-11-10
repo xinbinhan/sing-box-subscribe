@@ -89,13 +89,13 @@
       "tag": "wg-ep",
       "mtu": 1280,
       "address": "10.8.0.5/24",
-      "private_key": "",
+      "private_key": "专属密钥",
       "peers": [
         {
-          "address": "wg.xx.com",
+          "address": "域名",
           "port": 34567,
-          "public_key": "",
-          "pre_shared_key": "",
+          "public_key": "公钥",
+          "pre_shared_key": "共享密钥",
           "allowed_ips": [
             "0.0.0.0/0"
           ],
@@ -500,8 +500,8 @@
       "tag": "ipipgo",
       "server": "proxy.ipipgo.com",
       "server_port": 31212,
-      "username": "customer-d86d6b-country-NG",
-      "password": "36f26e10",
+      "username": "帐号",
+      "password": "密码",
       "detour": "Proxy"
       
     }
